@@ -15,6 +15,7 @@
       padding: 30px 0;
       background: url('pins/realistic-blue-smoke-spread-black-background%20(1).jpg') center/cover no-repeat fixed;
       background-color: #000;
+      perspective: 1000px;
     }
 
     .plate {
@@ -42,7 +43,7 @@
     }
 
     .plate:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) translateZ(50px);
     }
 
     .plate:nth-of-type(1) {
@@ -135,7 +136,7 @@
     }
 
     .gif-container:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) translateZ(50px);
     }
 
     .gif-container img {
