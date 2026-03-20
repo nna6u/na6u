@@ -31,15 +31,19 @@
       border-radius: 35px;
       border: 1px solid rgba(0, 212, 255, 0.3);
       opacity: 0;
-      transform: translateY(-30px);
-      animation: plateFadeIn 0.8s ease-out forwards;
+      transform: translateY(30px);
       backdrop-filter: blur(10px);
       padding: 20px 0;
       margin-bottom: 30px;
       box-shadow: none;
-      transition: transform 0.3s ease;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       cursor: pointer;
       transform-origin: center;
+    }
+
+    .plate.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .plate:hover {
@@ -49,19 +53,15 @@
     .plate:nth-of-type(1) {
       height: 50vh;
       max-height: 400px;
-      animation-delay: 0.8s;
     }
 
     .plate:nth-of-type(2) {
-      animation-delay: 1.6s;
     }
 
     .plate:nth-of-type(3) {
-      animation-delay: 2.4s;
     }
 
     .plate:nth-of-type(4) {
-      animation-delay: 3.2s;
     }
 
     .text {
@@ -71,8 +71,8 @@
       font-size: 16px;
       margin: 5px 0;
       opacity: 0;
-      transform: translateY(-20px);
-      animation: textFadeIn 0.6s ease-out forwards;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
       max-height: 320px;
       padding: 0 10px;
       word-wrap: break-word;
@@ -80,19 +80,24 @@
       overflow-y: auto;
     }
 
-    .plate:nth-of-type(1) .text:nth-child(1) { animation-delay: 1.6s; font-size: 24px; }
-    .plate:nth-of-type(1) .text:nth-child(2) { animation-delay: 1.9s; }
-    .plate:nth-of-type(1) .text:nth-child(3) { animation-delay: 2.2s; }
-    .plate:nth-of-type(1) .text:nth-child(4) { animation-delay: 2.5s; }
+    .text.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    .plate:nth-of-type(2) .text:nth-child(1) { animation-delay: 2.4s; font-size: 24px; }
-    .plate:nth-of-type(2) .text:nth-child(2) { animation-delay: 2.7s; }
+    .plate:nth-of-type(1) .text:nth-child(1) { font-size: 24px; }
+    .plate:nth-of-type(1) .text:nth-child(2) { }
+    .plate:nth-of-type(1) .text:nth-child(3) { }
+    .plate:nth-of-type(1) .text:nth-child(4) { }
 
-    .plate:nth-of-type(3) .text:nth-child(1) { animation-delay: 3.1s; font-size: 24px; }
-    .plate:nth-of-type(3) .text:nth-child(2) { animation-delay: 3.4s; }
+    .plate:nth-of-type(2) .text:nth-child(1) { font-size: 24px; }
+    .plate:nth-of-type(2) .text:nth-child(2) { }
 
-    .plate:nth-of-type(4) .text:nth-child(1) { animation-delay: 3.5s; font-size: 24px; }
-    .plate:nth-of-type(4) .text:nth-child(2) { animation-delay: 3.9s; }
+    .plate:nth-of-type(3) .text:nth-child(1) { font-size: 24px; }
+    .plate:nth-of-type(3) .text:nth-child(2) { }
+
+    .plate:nth-of-type(4) .text:nth-child(1) { font-size: 24px; }
+    .plate:nth-of-type(4) .text:nth-child(2) { }
 
     .label {
       font-weight: bold;
@@ -127,12 +132,16 @@
       width: 100%;
       max-width: 700px;
       opacity: 0;
-      transform: translateY(-30px);
-      animation: gifFadeIn 0.8s ease-out forwards 0s;
+      transform: translateY(30px);
       backdrop-filter: blur(5px);
-      transition: transform 0.3s ease;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       cursor: pointer;
       transform-origin: center;
+    }
+
+    .gif-container.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .gif-container:hover {
@@ -147,19 +156,7 @@
       border-radius: 12px;
     }
 
-    .gif-container:nth-of-type(2) {
-      animation-delay: 4.0s;
-    }
-
     @keyframes plateFadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes textFadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes gifFadeIn {
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -258,7 +255,7 @@
 </head>
 <body>
   <div class="gif-container">
-    <img src="pins/grimmjow-jaegerjaquez-bleach-tybw.gif" alt="Grimmjow GIF">
+    <img src="pins/grimmjow-jaegerjaquez-bleach-tybw.gif" alt="Grimmjow GIF" loading="lazy">
   </div>
   <div class="plate">
     <div class="text label">contact information</div>
@@ -282,8 +279,48 @@
     <div class="text">fortuna812, dark prince, polmateri, cmh, kets4eki, asteria, rokerveka, mzlff, lazzy2wice, poshlaya molli, gspd, blazergosicko, sematary, fallen777angel, wikuro, rihanna, lumi athena, lonown, gluk'oZa, mareux</div>
   </div>
   <div class="gif-container">
-    <img src="pins/grimmjow-grimmjow-jaegerjaquez (1).gif" alt="Grimmjow GIF">
+    <img src="pins/grimmjow-grimmjow-jaegerjaquez (1).gif" alt="Grimmjow GIF" loading="lazy">
   </div>
 
+  <script>
+    // Intersection Observer for scroll-based animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // For text elements, stagger their animation
+          if (entry.target.classList.contains('text')) {
+            const textElements = entry.target.parentElement.querySelectorAll('.text');
+            textElements.forEach((text, index) => {
+              setTimeout(() => {
+                text.classList.add('visible');
+              }, index * 100);
+            });
+            observer.unobserve(entry.target);
+          }
+          // For plates and gifs, animate them and their children
+          else if (entry.target.classList.contains('plate') || entry.target.classList.contains('gif-container')) {
+            const textChildren = entry.target.querySelectorAll('.text');
+            textChildren.forEach((text, index) => {
+              setTimeout(() => {
+                text.classList.add('visible');
+              }, (index + 1) * 100);
+            });
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all plates, text elements, and gif-containers
+    document.querySelectorAll('.plate, .text, .gif-container').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
 </body>
 </html>
