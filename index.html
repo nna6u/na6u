@@ -285,33 +285,40 @@
   <script>
     // Intersection Observer for scroll-based animations
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.8,
+      rootMargin: '0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          // For text elements, stagger their animation
-          if (entry.target.classList.contains('text')) {
-            const textElements = entry.target.parentElement.querySelectorAll('.text');
-            textElements.forEach((text, index) => {
-              setTimeout(() => {
-                text.classList.add('visible');
-              }, index * 100);
-            });
-            observer.unobserve(entry.target);
-          }
           // For plates and gifs, animate them and their children
-          else if (entry.target.classList.contains('plate') || entry.target.classList.contains('gif-container')) {
+          if (entry.target.classList.contains('plate') || entry.target.classList.contains('gif-container')) {
             const textChildren = entry.target.querySelectorAll('.text');
             textChildren.forEach((text, index) => {
               setTimeout(() => {
                 text.classList.add('visible');
               }, (index + 1) * 100);
             });
-            observer.unobserve(entry.target);
+          }
+          // For text elements, stagger their animation
+          else if (entry.target.classList.contains('text')) {
+            const textElements = entry.target.parentElement.querySelectorAll('.text');
+            textElements.forEach((text, index) => {
+              setTimeout(() => {
+                text.classList.add('visible');
+              }, index * 100);
+            });
+          }
+        } else {
+          // Remove visible class when element leaves viewport
+          entry.target.classList.remove('visible');
+          // Also remove from child text elements
+          if (entry.target.classList.contains('plate') || entry.target.classList.contains('gif-container')) {
+            entry.target.querySelectorAll('.text').forEach(text => {
+              text.classList.remove('visible');
+            });
           }
         }
       });
