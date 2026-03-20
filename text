@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой сайт</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(120deg, #4facfe, #00f2fe);
+      color: #333;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Мой сайт</h1>
+    <p>Добро пожаловать!</p>
+  </header>
+
+  <section>
+    <h2>Обо мне</h2>
+    <p>я пидарас</p>
+  </section>
+
+  <section>
+    <h2>Мои проекты</h2>
+    <p>ненехочу</p>
+  </section>
+
+  <section>
+    <h2>Контакты</h2>
+    <p>ллл</p>
+  </section>
+
+</body>
+</html>
