@@ -23,6 +23,9 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: plateFadeIn 0.8s ease forwards;
     }
 
     .text {
@@ -31,6 +34,21 @@
       text-align: center;
       font-size: 24px;
       margin: 5px 0;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: textFadeIn 0.5s ease forwards;
+    }
+
+    .text:nth-child(1) { animation-delay: 0.2s; }
+    .text:nth-child(2) { animation-delay: 0.35s; }
+    .text:nth-child(3) { animation-delay: 0.5s; }
+
+    @keyframes plateFadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes textFadeIn {
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
