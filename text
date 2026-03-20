@@ -1,64 +1,43 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Мой сайт</title>
-
+  <title>Plate</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial;
-      background: linear-gradient(120deg, #4facfe, #00f2fe);
-      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000;
     }
 
-    header {
-      background: #222;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    section {
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-      background: white;
+    .plate {
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(circle, #00BFFF 0%, #000000 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       border-radius: 10px;
-      margin-top: 20px;
     }
 
-    h1, h2 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.6;
+    .text {
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      font-size: 24px;
+      margin: 5px 0;
     }
   </style>
 </head>
-
 <body>
-
-  <header>
-    <h1>Мой сайт</h1>
-    <p>Добро пожаловать!</p>
-  </header>
-
-  <section>
-    <h2>Обо мне</h2>
-    <p>я пидарас</p>
-  </section>
-
-  <section>
-    <h2>Мои проекты</h2>
-    <p>ненехочу</p>
-  </section>
-
-  <section>
-    <h2>Контакты</h2>
-    <p>ллл</p>
-  </section>
-
+  <div class="plate">
+    <div class="text">nna6u  rrazze</div>
+    <div class="text">he  him</div>
+    <div class="text">kkk</div>
+  </div>
 </body>
 </html>
