@@ -8,18 +8,19 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
-      background: url('pins/realistic-blue-smoke-spread-black-background%20(1).jpg') center/cover no-repeat;
+      min-height: 100vh;
+      padding: 30px 0;
+      background: url('pins/realistic-blue-smoke-spread-black-background%20(1).jpg') center/cover no-repeat fixed;
       background-color: #000;
     }
 
     .plate {
       width: 90vw;
-      height: 50vh;
+      height: auto;
+      min-height: 200px;
       max-width: 800px;
-      max-height: 400px;
       background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(139,0,0,0.7) 100%);
       display: flex;
       flex-direction: column;
@@ -31,28 +32,92 @@
       transform: translateY(-30px);
       animation: plateFadeIn 1s ease forwards 0.5s;
       backdrop-filter: blur(10px);
-      padding: 10px 0;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+
+    .plate:nth-of-type(1) {
+      height: 50vh;
+      max-height: 400px;
+    }
+
+    .plate:nth-of-type(2),
+    .plate:nth-of-type(3),
+    .plate:nth-of-type(4) {
+      height: auto;
+      max-height: 350px;
     }
 
     .text {
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      font-size: 24px;
+      font-size: 16px;
       margin: 5px 0;
       opacity: 0;
       transform: translateY(-20px);
       animation: textFadeIn 1s ease forwards;
+      max-height: 320px;
+      padding: 0 15px;
+      word-wrap: break-word;
+      line-height: 1.4;
+      overflow-y: auto;
     }
 
-    .text:nth-child(1) { animation-delay: 1s; }
+    .text:nth-child(1) { animation-delay: 1s; font-size: 24px; }
     .text:nth-child(2) { animation-delay: 1.2s; }
     .text:nth-child(3) { animation-delay: 1.4s; }
     .text:nth-child(4) { animation-delay: 1.6s; }
 
+    .plate:nth-of-type(2) {
+      animation-delay: 1.8s;
+    }
+
+    .plate:nth-of-type(2) .text:nth-child(1) { animation-delay: 2.3s; }
+    .plate:nth-of-type(2) .text:nth-child(2) { animation-delay: 2.5s; }
+
+    .plate:nth-of-type(3) {
+      animation-delay: 2.7s;
+    }
+
+    .plate:nth-of-type(3) .text:nth-child(1) { animation-delay: 3.2s; }
+    .plate:nth-of-type(3) .text:nth-child(2) { animation-delay: 3.4s; }
+
+    .plate:nth-of-type(4) {
+      animation-delay: 3.6s;
+    }
+
+    .plate:nth-of-type(4) .text:nth-child(1) { animation-delay: 4.1s; }
+    .plate:nth-of-type(4) .text:nth-child(2) { animation-delay: 4.3s; }
+
+    .label {
+      font-weight: bold;
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .text::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .text::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+    }
+
+    .text::-webkit-scrollbar-thumb {
+      background: rgba(255,0,0,0.6);
+      border-radius: 10px;
+    }
+
+    .text::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,0,0,0.8);
+    }
+
     .gif-container {
       padding: 4px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       border-radius: 4px;
       background: rgba(0,0,0,0.15);
       width: 100%;
@@ -93,6 +158,21 @@
     <div class="text">he / him</div>
     <div class="text">rrazze / rrazzew / nnaib</div>
     <div class="text">enfj 7w6 sx7 sx7sx4sx8 velf sanguine / phlegmatic</div>
+  </div>
+
+  <div class="plate">
+    <div class="text label">fd</div>
+    <div class="text">genshin impact, honkai star rail, hunter x hunter, south park, regretevator, chainsaw man anime, mouthwashing, fnaf, resident evil (1-6parts), slow damage, mgr, mgs, helluva boss, hazbin hotel, evangelion, the summer hikaru died, alien stage, mortal kombat (new timeline), beastars anime, stardew valley, subnautica, avatar movie, bleach, mob psycho 100, jujutsu kaisen, spooky month, american psycho, fight club, se trata de nada, kamisama kiss, no i'm not a human, cookie run kingdom, scott pilgrim</div>
+  </div>
+
+  <div class="plate">
+    <div class="text label">kinn list</div>
+    <div class="text">curly, leorio, phainon, tartaglia, split, stolas, randy marsh, kaworu, hikaru, ivan, johny cage, grimmjow</div>
+  </div>
+
+  <div class="plate">
+    <div class="text label">music</div>
+    <div class="text">fortuna812, dark prince, polmateri, cmh, kets4eki, asteria, rokerveka, mzlff, lazzy2wice, poshlaya molli, gspd, blazergosicko, sematary, fallen777angel, wikuro, rihanna, lumi athena, lonown, gluk'oZa, mareux</div>
   </div>
 </body>
 </html>
